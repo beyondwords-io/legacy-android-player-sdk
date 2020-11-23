@@ -1,15 +1,8 @@
-# SpeechKit player #
-
-`SpeechKit player` is an application level media player for Android that includes UI components to control the playbck of audio articles.
-SpeechKit player is easy to integrate and use in application.
-
-## Using SpeechKit player ##
-
-SpeechKit player module can be obtained from [Bintray maven repository](https://bintray.com/).
+# Quick Start #
 
 ### 1. Add repositories ###
 
-You need to make sure you have the [Bintray maven repository](https://bintray.com/) repository in the `build.gradle` file in the root of your project:
+You need to make sure you have [Bintray maven repository](https://bintray.com/) repository in the `build.gradle` file in the root of your project:
 
 ```gradle
 repositories {
@@ -18,7 +11,7 @@ repositories {
 }
 ```
 
-### 2. Add SpeechKit player module dependency ###
+### 2. Add the SpeechKit SDK module dependency ###
 
 Next add a dependency in the `build.gradle` file of your app module. The
 following will add a dependency to the library:
@@ -33,12 +26,12 @@ Currently available version is `1.0.0`.
 More information on the library that are available from maven repository
 can be found on [Bintray][].
 
-[Bintray]: https://bintray.com/beta/#/spkt/maven?tab=packages
+[Bintray]: https://bintray.com/beta/#/speechkit/maven?tab=packages
 
 ### 3. Turn on Java 8 support ###
 
 If not enabled already, you also need to turn on Java 8 support in all
-`build.gradle` files depending on SpeechKit player, by adding the following to the
+`build.gradle` files depending on the SpeechKit SDK by adding the following to the
 `android` section:
 
 ```gradle
@@ -47,9 +40,9 @@ compileOptions {
 }
 ```
 
-## Touching SpeechKit player
+## Usage
 
-To instantiate a `Player`, you have to use the `PlayerBuilder` conatained in the sdk:
+To instantiate a `Player` you have to use the `PlayerBuilder` conatained in the SDK:
 
 ```java
 import io.speechkit.player.Player;
@@ -63,7 +56,7 @@ final Player player = PlayerBuilder.forExternalId(context, projectid, externalid
 ...
 ```
 
-After creating a player, you can subscribe to its events.
+After creating a player, you can subscribe to its events:
 
 ```java
 ...
@@ -86,20 +79,19 @@ player.addListener(new Player.EventListener() {
 ...
 ```
 
-Player provides standard methods, like: `play()/pause()`, `rewind()/fastForward()`, `seekTo()` and so on.
+Player provides standard methods like: `play()/pause()`, `rewind()/fastForward()`, `seekTo()` and so on.
 
-When you will done with the player you should call the `release()` method.
-The player must not be used after calling this method.
+When you are done with the player you should call the `release()` method. The player must not be used after calling this method.
 
-## Touching SpeechKit player UI
+## Customising the default player UI
 
-`SpeechKit player sdk` also conatins UI-component: `PlaybackControlView`.
+The SDK also conatins a UI-component: `PlaybackControlView`.
 
 ```java
 import io.speechkit.player.PlaybackControlView;
 ```
 
-To use it, simply instantiate it directly and add to the current view hierarchy, or just add it to your xml layout.
+To use it simply instantiate it directly and add to the current view hierarchy, or just add it to your xml layout.
 
 Then bind the player and playback control view:
 
