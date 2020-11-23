@@ -14,7 +14,7 @@ You need to make sure you have the [Bintray maven repository](https://bintray.co
 ```gradle
 repositories {
     ...
-    maven { url 'https://dl.bintray.com/spkt/maven' }
+    maven { url 'https://dl.bintray.com/speechkit/maven' }
 }
 ```
 
@@ -28,7 +28,7 @@ implementation 'io.speechkit.android:player:1.X.X'
 ```
 
 where `1.X.X` is your preferred version.
-Currently available version is `1.0.0-alpha1`.
+Currently available version is `1.0.0`.
 
 More information on the library that are available from maven repository
 can be found on [Bintray][].
