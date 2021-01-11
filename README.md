@@ -21,7 +21,7 @@ implementation 'io.speechkit.android:player:1.X.X'
 ```
 
 where `1.X.X` is your preferred version.
-Currently available version is `1.0.0`.
+Currently available version is `1.0.1`.
 
 More information on the library that are available from maven repository
 can be found on [Bintray][].
