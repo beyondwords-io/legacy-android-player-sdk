@@ -1,0 +1,100 @@
+apply plugin: 'com.android.application'
+
+buildscript {
+    repositories {
+        maven { url 'https://dl.bintray.com/speechkit/maven' }
+    }
+}
+
+repositories {
+    maven { url 'https://dl.bintray.com/speechkit/maven' }
+}
+
+android {
+    compileSdkVersion rootProject.property("android.build.compileSdkVersion") as int
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        minSdkVersion rootProject.property("android.build.minSdkVersion") as int
+        targetSdkVersion rootProject.property("android.build.targetSdkVersion") as int
+
+        applicationId "io.speechkit.player.demo"
+
+        versionCode 1
+        versionName "1.0"
+
+        vectorDrawables.useSupportLibrary true
+
+        buildConfigField "String", "LIB_VERSION", "\"${rootProject.property('lib.versionName')}\""
+    }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/LICENSE'
+        exclude '.readme'
+        exclude '**/*.java'
+    }
+
+    buildTypes {
+        release {
+            debuggable false
+            minifyEnabled true
+            shrinkResources true
+            shrinkResources false
+
+            proguardFiles = [
+                "proguard-rules.txt",
+                getDefaultProguardFile('proguard-android.txt')
+            ]
+        }
+        debug {
+            jniDebuggable = true
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    lintOptions {
+        // The demo app isn't indexed, doesn't have translations, and has a
+        // banner for AndroidTV that's only in xhdpi density.
+        disable 'GoogleAppIndexingWarning','MissingTranslation','IconDensities'
+    }
+
+    splits {
+        abi {
+            // Enables ABI APK splits.
+            enable true
+
+            // By default all ABIs are included, so use reset() and include to specify that we only
+            // want APKs for x86, armeabi-v7a, and mips.
+
+            // Resets the list of ABIs that Gradle should create APKs for to none.
+            reset()
+
+            // Specifies a list of ABIs that Gradle should create APKs for.
+
+            include 'armeabi-v7a', 'x86', 'x86_64', 'arm64-v8a'
+
+            // Specifies that we do not want to also generate a universal APK that includes all ABIs.
+            universalApk true
+        }
+    }
+}
+
+dependencies {
+    implementation "androidx.annotation:annotation:${rootProject.property('androidx-annotation.version')}"
+    implementation "androidx.legacy:legacy-support-core-ui:${rootProject.property('androidx-legacy-support-core-ui.version')}"
+    implementation "androidx.fragment:fragment:${rootProject.property('androidx-fragment.version')}"
+    implementation "androidx.constraintlayout:constraintlayout:${rootProject.property('androidx-constraintlayout.version')}"
+
+    implementation "com.google.android.material:material:${rootProject.property('google-material.version')}"
+
+    implementation "${rootProject.property('lib.groupId')}:${rootProject.property('lib.artifactId')}:${rootProject.property('lib.versionName')}"
+}

@@ -1,0 +1,5 @@
+# Proguard rules specific to the demo app.
+-printconfiguration "result.pro"
+-verbose
+
+-keep class androidx.drawerlayout.widget.DrawerLayout { *; }

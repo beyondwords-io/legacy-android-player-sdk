@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+    <string name="application_name">SpeechKit Player Demo</string>
+
+    <string name="load" translatable="false">Load</string>
+    <string name="play_method" translatable="false">play()</string>
+    <string name="pause_method" translatable="false">pause()</string>
+    <string name="isReady_method" translatable="false">isReady()</string>
+    <string name="isPlaying_method" translatable="false">isPlaying()</string>
+    <string name="isPaused_method" translatable="false">isPaused()</string>
+    w<string name="isEnded_method" translatable="false">isEnded()</string>
+    <string name="current_time_method" translatable="false">currentTime()</string>
+    <string name="remaining_time_method" translatable="false">remainingTime()</string>
+    <string name="duration_method" translatable="false">duration()</string>
+    <string name="clear_log" translatable="false">clear log</string>
+
+    <string name="player_projectid" translatable="false">Project id</string>
+    <string name="player_externalid" translatable="false">External id</string>
+    <string name="player_podcastid" translatable="false">Podcast id</string>
+    <string name="player_articleurl" translatable="false">Article url</string>
+    
+    <string name="player_use_ui" translatable="false">Use UI</string>
+</resources>

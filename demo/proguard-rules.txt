@@ -1,0 +1,3 @@
+# Increase optimization passes back to 5 when AGP support ProGuard version >= 5.3.3
+# https://sourceforge.net/p/proguard/bugs/623/
+-keep public class androidx.drawerlayout.widget.DrawerLayout { *; }

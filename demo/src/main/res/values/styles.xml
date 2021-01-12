@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="TrackSelectionDialogThemeOverlay" parent="ThemeOverlay.AppCompat.Dialog.Alert">
+        <item name="windowNoTitle">false</item>
+    </style>
+
+    <style name="EditTextStyle" parent="@android:style/Widget.EditText">
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <declare-styleable name="TintableCompoundCompatTextView">
+        <attr name="supportCompoundTint" format="reference" />
+    </declare-styleable>
+
+    <!--
+         TextAppearance
+    -->
+    <style name="RobotoTextViewStyle" parent="android:Widget.TextView">
+        <item name="android:fontFamily">@font/roboto</item>
+    </style>
+
+    <style name="RobotoButtonStyle" parent="android:Widget.Holo.Button">
+        <item name="android:fontFamily">@font/roboto</item>
+    </style>
+
+    <style name="TextAppearance_Roboto" parent="android:TextAppearance">
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">#333333</item>
+        <item name="android:fontFamily" tools:ignore="NewApi">Roboto</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="TextAppearance_Roboto.Middle"/>
+
+    <!--AlertDialog-->
+    <style name="AlertDialogTheme" parent="Theme.MaterialComponents.Light.Dialog.Alert">
+        <!-- Base colors -->
+        <item name="android:windowBackground">@drawable/bg_white_16</item>
+
+        <!-- Button styles -->
+        <item name="android:buttonBarPositiveButtonStyle" tools:targetApi="lollipop">@style/DialogButton</item>
+        <item name="android:buttonBarNegativeButtonStyle" tools:targetApi="lollipop">@style/DialogButton</item>
+        <item name="android:buttonBarNeutralButtonStyle" tools:targetApi="lollipop">@style/DialogButton</item>
+
+        <!-- Text -->
+        <item name="android:windowTitleStyle">@style/AlertDialogTitle</item>
+        <item name="android:textAppearance">@style/TextAppearance_Roboto</item>
+    </style>
+
+    <style name="AlertDialogTitle" parent="TextAppearance_Roboto.Middle">
+        <item name="android:maxLines">1</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="DialogButton" parent="@style/Widget.MaterialComponents.Button.TextButton.Dialog">
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:background">@android:color/transparent</item>
+        <item name="background">@android:color/transparent</item>
+        <item name="android:textAppearance">@style/TextAppearance_Roboto.Middle</item>
+    </style>
+
+    <style name="PlayerConsoleButton" parent="@style/Widget.MaterialComponents.Button.TextButton">
+        <item name="android:minWidth">0dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">10sp</item>
+        <item name="backgroundTint">?attr/colorAccent</item>
+        <item name="cornerRadius">4dp</item>
+        <item name="rippleColor">#61000000</item>
+    </style>
+
+    <style name="LoadButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">@string/load</item>
+        <item name="android:minWidth">0dp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="cornerRadius">4dp</item>
+        <item name="rippleColor">#61000000</item>
+    </style>
+
+    <!-- BottomSheetDialog -->
+    <style name="BottomSheet" parent="Theme.MaterialComponents.Light.BottomSheetDialog">
+        <item name="colorPrimary">@android:color/black</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textViewStyle">@style/RobotoTextViewStyle</item>
+
+        <item name="android:textSize">15sp</item>
+        <item name="android:navigationBarColor" tools:targetApi="lollipop">@android:color/black</item>
+        <item name="android:colorBackground">@android:color/transparent</item>
+    </style>
+
+    <style name="BottomSheet.LightFullscreen">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@android:color/white</item>
+    </style>
+
+    <style name="BottomSheet.Transparent">
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+        <item name="android:statusBarColor" tools:targetApi="lollipop">@android:color/transparent
+        </item>
+    </style>
+
+</resources>
