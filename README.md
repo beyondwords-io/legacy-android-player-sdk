@@ -110,3 +110,15 @@ control.setPlayer(null);
 player.release();
 player = null;
 ```
+
+## Demo app
+
+Run the following command in the terminal:
+```
+git clone https://github.com/SpeechKit/speechkit-android-sdk-public.git ./speechkit_sdk_demo
+```
+
+Then import the project to Android Studio:
+```
+File -> New -> Import Project… (navigate to speechkit_sdk_demo dir)
+```
