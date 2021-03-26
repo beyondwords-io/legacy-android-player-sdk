@@ -1,13 +1,18 @@
 apply plugin: 'com.android.application'
 
 buildscript {
+
     repositories {
-        maven { url 'https://dl.bintray.com/speechkit/maven' }
+        maven {
+            url 'https://repo.repsy.io/mvn/speechkitio/speechkit_io'
+        }
     }
 }
 
 repositories {
-    maven { url 'https://dl.bintray.com/speechkit/maven' }
+    maven {
+        url 'https://repo.repsy.io/mvn/speechkitio/speechkit_io'
+    }
 }
 
 android {

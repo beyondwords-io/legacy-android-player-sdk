@@ -2,14 +2,24 @@
 
 ### 1. Add repositories ###
 
-You need to make sure you have [Bintray maven repository](https://bintray.com/) repository in the `build.gradle` file in the root of your project:
+Due to Bintray/JCenter is sunsetting, the newer versions of the library are located in repsy.io repo.
+- 1.0.7+ versions:
+    ```gradle
+    repositories {
+        ...
+        maven { url 'https://repo.repsy.io/mvn/speechkitio/speechkit_io' }
+    }
+    ```
 
-```gradle
-repositories {
-    ...
-    maven { url 'https://dl.bintray.com/speechkit/maven' }
-}
-```
+- Previous versions:
+    You need to make sure you have [Bintray maven repository](https://bintray.com/) repository in the `build.gradle` file in the root of your project:
+
+    ```gradle
+    repositories {
+        ...
+        maven { url 'https://dl.bintray.com/speechkit/maven' }
+    }
+    ```
 
 ### 2. Add the SpeechKit SDK module dependency ###
 
@@ -21,12 +31,7 @@ implementation 'io.speechkit.android:player:1.X.X'
 ```
 
 where `1.X.X` is your preferred version.
-Currently available version is `1.0.6`.
-
-More information on the library that are available from maven repository
-can be found on [Bintray][].
-
-[Bintray]: https://bintray.com/beta/#/speechkit/maven?tab=packages
+Currently available version is `1.0.7`.
 
 ### 3. Turn on Java 8 support ###
 
@@ -74,7 +79,7 @@ player.addListener(new Player.EventListener() {
     public void onPlaybackRate(float rate) {}
 
     public void onEnded() {}
-    
+
 });
 ...
 ```
