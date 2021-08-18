@@ -31,7 +31,7 @@ implementation 'io.speechkit.android:player:1.X.X'
 ```
 
 where `1.X.X` is your preferred version.
-Currently available version is `1.0.8`.
+Currently available version is `1.0.9`.
 
 ### 3. Turn on Java 8 support ###
 
