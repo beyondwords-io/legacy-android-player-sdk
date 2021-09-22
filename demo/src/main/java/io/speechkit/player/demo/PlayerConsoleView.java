@@ -13,6 +13,7 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.annotation.ColorInt;
 import androidx.annotation.LayoutRes;
+import androidx.annotation.Nullable;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -127,8 +128,8 @@ public final class PlayerConsoleView implements Player.EventListener {
     }
 
     @Override
-    public void onPlay(float duration, float progress) {
-        logger.i(TAG, "onPlay, progress=" + progress + ", duration=" + duration);
+    public void onPlay(float duration, float progress, @Nullable String advertiser, @Nullable String adUrl) {
+        logger.i(TAG, "onPlay, progress=" + progress + ", duration=" + duration + ", advertiser=" + advertiser + ", adUrl=" + adUrl);
     }
 
     @Override

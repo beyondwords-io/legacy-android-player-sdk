@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.widget.CheckBox;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputLayout;
@@ -126,7 +127,7 @@ public class MainActivity extends AppCompatActivity implements Player.EventListe
     }
 
     @Override
-    public void onPlay(float duration, float progress) {}
+    public void onPlay(float duration, float progress, @Nullable String advertiser, @Nullable String adUrl) { }
 
     @Override
     public void onPause(float duration, float progress) {}

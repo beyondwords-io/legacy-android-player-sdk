@@ -31,7 +31,7 @@ implementation 'io.speechkit.android:player:1.X.X'
 ```
 
 where `1.X.X` is your preferred version.
-Currently available version is `1.0.9`.
+Currently available version is `1.0.10`.
 
 ### 3. Turn on Java 8 support ###
 
@@ -70,8 +70,8 @@ final Player player = PlayerBuilder.forExternalId(...).build();
 player.addListener(new Player.EventListener() {
     public void onPrepare() {}
 
-    public void onPlay(float durationSec, float progressSec) {}
-
+    public void onPlay(float duration, float progress, @Nullable String advertiser, @Nullable String adUrl) { }
+    
     public void onPause(float durationSec, float progressSec) {}
 
     public void onTimeUpdate(float durationSec, float progressSec) {}
