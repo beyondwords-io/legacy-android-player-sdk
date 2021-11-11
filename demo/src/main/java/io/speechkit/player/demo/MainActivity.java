@@ -1,5 +1,6 @@
 package io.speechkit.player.demo;
 
+import android.os.Build;
 import android.view.inputmethod.InputMethodManager;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -233,7 +234,15 @@ public class MainActivity extends AppCompatActivity implements Player.EventListe
 
     private PendingIntent createLaunchIntent() {
         final Intent intent = getPackageManager().getLaunchIntentForPackage(getPackageName());
-        return intent != null ? PendingIntent.getActivity(this, 0, intent, 0) : null;
+        final int flags;
+
+        if (Build.VERSION.SDK_INT >= 23) {
+            flags = PendingIntent.FLAG_IMMUTABLE;
+        } else {
+            flags = 0;
+        }
+
+        return intent != null ? PendingIntent.getActivity(this, 0, intent, flags) : null;
     }
 
     private void createPlayer(final PlayerBuilder builder) {
