@@ -31,7 +31,7 @@ implementation 'io.speechkit.android:player:1.X.X'
 ```
 
 where `1.X.X` is your preferred version.
-Currently available version is `1.0.14`.
+Currently available version is `1.0.15`.
 
 ### 3. Turn on Java 8 support ###
 
@@ -114,6 +114,26 @@ control.setPlayer(null);
 ...
 player.release();
 player = null;
+```
+
+## Fetching podcast metadata
+
+This can be done in a similar way to play a podcast, you can specify either by using an external id, podcast id or an article url.
+
+```java
+import io.speechkit.player.Player;
+
+PodcastRetriever podcastRetriever = new PodcastRetriever();
+
+// To fetch via an external id 
+podcastRetriever.getViaExternalId(projectId, externalId, listener)
+
+// To fetch via an podcast id 
+podcastRetriever.getViaPodcastId(projectId, podcastId, listener)
+
+// To fetch via an article url 
+podcastRetriever.getViaArticleUrl(projectId, articleUrl, listener)
+
 ```
 
 ## Demo app
