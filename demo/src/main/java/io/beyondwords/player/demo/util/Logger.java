@@ -1,4 +1,4 @@
-package io.speechkit.player.demo.util;
+package io.beyondwords.player.demo.util;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -11,7 +11,6 @@ import android.util.Log;
 
 import androidx.annotation.AnyThread;
 import androidx.annotation.IntDef;
-import androidx.annotation.NonNull;
 import androidx.core.util.Consumer;
 
 public final class Logger {

@@ -1,4 +1,4 @@
-package io.speechkit.player.demo;
+package io.beyondwords.player.demo;
 
 import java.lang.reflect.Field;
 
@@ -20,8 +20,9 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import io.speechkit.player.Player;
 
 import io.speechkit.player.PlayerException;
-import io.speechkit.player.demo.util.Logger;
-import io.speechkit.player.demo.util.TextViewLogger;
+import io.beyondwords.player.demo.util.Logger;
+import io.beyondwords.player.demo.util.TextViewLogger;
+import io.speechkit.player.demo.R;
 
 public final class PlayerConsoleView implements Player.EventListener {
     private static final String TAG = "PlayerConsole";

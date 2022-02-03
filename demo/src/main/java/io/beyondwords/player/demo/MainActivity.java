@@ -1,4 +1,4 @@
-package io.speechkit.player.demo;
+package io.beyondwords.player.demo;
 
 import android.os.Build;
 import android.view.inputmethod.InputMethodManager;
@@ -22,6 +22,8 @@ import com.google.android.material.textfield.TextInputLayout;
 import io.speechkit.player.PlaybackControlView;
 import io.speechkit.player.PlayerBuilder;
 import io.speechkit.player.Player;
+import io.speechkit.player.demo.BuildConfig;
+import io.speechkit.player.demo.R;
 
 public class MainActivity extends AppCompatActivity implements Player.EventListener, View.OnClickListener {
     private static final String TAG = "MainActivity";

@@ -1,4 +1,4 @@
-package io.speechkit.player.demo;
+package io.beyondwords.player.demo;
 
 import android.content.Context;
 import android.content.SharedPreferences;

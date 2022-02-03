@@ -1,4 +1,4 @@
-package io.speechkit.player.demo.util;
+package io.beyondwords.player.demo.util;
 
 import android.text.method.ScrollingMovementMethod;
 import android.text.style.ForegroundColorSpan;
