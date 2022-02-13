@@ -1,22 +1,8 @@
 apply plugin: 'com.android.application'
-
-buildscript {
-
-    repositories {
-        maven {
-            url 'https://repo.repsy.io/mvn/speechkitio/speechkit_io'
-        }
-    }
-}
-
-repositories {
-    maven {
-        url 'https://repo.repsy.io/mvn/speechkitio/speechkit_io'
-    }
-}
+apply plugin: 'kotlin-android'
 
 android {
-    compileSdkVersion rootProject.property("android.build.compileSdkVersion") as int
+    compileSdkVersion rootProject.property("android_build_compileSdkVersion") as int
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -24,17 +10,17 @@ android {
     }
 
     defaultConfig {
-        minSdkVersion rootProject.property("android.build.minSdkVersion") as int
-        targetSdkVersion rootProject.property("android.build.targetSdkVersion") as int
+        minSdkVersion rootProject.property("android_build_minSdkVersion") as int
+        targetSdkVersion rootProject.property("android_build_targetSdkVersion") as int
 
-        applicationId "io.speechkit.player.demo"
+        applicationId "io.beyondwords.player.demo"
 
         versionCode 1
         versionName "1.0"
 
         vectorDrawables.useSupportLibrary true
 
-        buildConfigField "String", "LIB_VERSION", "\"${rootProject.property('lib.versionName')}\""
+        buildConfigField "String", "LIB_VERSION", "\"$beyondwwords_version\""
     }
 
     packagingOptions {
@@ -59,11 +45,6 @@ android {
         debug {
             jniDebuggable = true
         }
-    }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     lintOptions {
@@ -94,12 +75,11 @@ android {
 }
 
 dependencies {
-    implementation "androidx.annotation:annotation:${rootProject.property('androidx-annotation.version')}"
-    implementation "androidx.legacy:legacy-support-core-ui:${rootProject.property('androidx-legacy-support-core-ui.version')}"
-    implementation "androidx.fragment:fragment:${rootProject.property('androidx-fragment.version')}"
-    implementation "androidx.constraintlayout:constraintlayout:${rootProject.property('androidx-constraintlayout.version')}"
-
-    implementation "com.google.android.material:material:${rootProject.property('google-material.version')}"
-
-    implementation "${rootProject.property('lib.groupId')}:${rootProject.property('lib.artifactId')}:${rootProject.property('lib.versionName')}"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
+    implementation "androidx.annotation:annotation:$androidx_annotation_version"
+    implementation "androidx.legacy:legacy-support-core-ui:$androidx_legacy_support_core_ui_version"
+    implementation "androidx.fragment:fragment-ktx:$androidx_fragment_version"
+    implementation "androidx.constraintlayout:constraintlayout:$androidx_constraintlayout_version"
+    implementation "com.google.android.material:material:$google_material_version"
+    implementation "io.speechkit.android:player:$beyondwwords_version"
 }

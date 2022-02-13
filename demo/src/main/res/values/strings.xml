@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
-    <string name="application_name">SpeechKit Player Demo</string>
+    <string name="application_name">BeyondWords Player Demo</string>
 
     <string name="load" translatable="false">Load</string>
     <string name="play_method" translatable="false">play()</string>
@@ -18,6 +18,11 @@
     <string name="player_externalid" translatable="false">External id</string>
     <string name="player_podcastid" translatable="false">Podcast id</string>
     <string name="player_articleurl" translatable="false">Article url</string>
-    
-    <string name="player_use_ui" translatable="false">Use UI</string>
+
+    <string name="player_loading_from_external_id" translatable="false">Loading from external id</string>
+    <string name="player_loading_from_podcast_id" translatable="false">Loading from podcast id</string>
+    <string name="player_loading_from_article_url" translatable="false">Loading from article url</string>
+
+    <string name="library_version_template" translatable="false">lib v%1$s/%2$s)</string>
+    <string name="player_display_notification" translatable="false">Display notification</string>
 </resources>

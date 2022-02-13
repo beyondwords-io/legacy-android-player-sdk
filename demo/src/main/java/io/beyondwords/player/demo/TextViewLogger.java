@@ -1,22 +1,22 @@
-package io.beyondwords.player.demo.util;
+package io.beyondwords.player.demo;
 
+import android.content.Context;
+import android.graphics.Color;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.text.Spannable;
 import android.text.method.ScrollingMovementMethod;
 import android.text.style.ForegroundColorSpan;
 import android.util.TypedValue;
 import android.widget.TextView;
-import android.content.Context;
-import android.graphics.Color;
-import android.text.Spannable;
-import android.os.Handler;
-import android.os.Message;
-import android.os.Looper;
 
-import androidx.annotation.NonNull;
-import androidx.core.util.Consumer;
 import androidx.annotation.ColorInt;
 import androidx.annotation.Dimension;
+import androidx.annotation.NonNull;
+import androidx.core.util.Consumer;
 
-public final class TextViewLogger implements Consumer<Logger.Item> {
+public final class TextViewLogger implements Consumer<io.beyondwords.player.demo.util.Logger.Item> {
     public static final class Builder {
         private final Context context;
 
@@ -115,7 +115,7 @@ public final class TextViewLogger implements Consumer<Logger.Item> {
     }
 
     @Override
-    public void accept(@NonNull final Logger.Item item) {
+    public void accept(@NonNull final io.beyondwords.player.demo.util.Logger.Item item) {
         if (Looper.getMainLooper().getThread() == Thread.currentThread()) {
             print(item);
         } else {
@@ -123,7 +123,7 @@ public final class TextViewLogger implements Consumer<Logger.Item> {
         }
     }
 
-    private void print(final Logger.Item item) {
+    private void print(final io.beyondwords.player.demo.util.Logger.Item item) {
         final int start = textView.getText().length();
         textView.append(item.msg);
         final int end = textView.getText().length();
@@ -134,20 +134,20 @@ public final class TextViewLogger implements Consumer<Logger.Item> {
 
     private boolean handle(final Message msg) {
         if (msg.what == 0) {
-            print((Logger.Item) msg.obj);
+            print((io.beyondwords.player.demo.util.Logger.Item) msg.obj);
         }
         return true;
     }
 
-    private int selectColor(@Logger.Kind final int kind) {
+    private int selectColor(@io.beyondwords.player.demo.util.Logger.Kind final int kind) {
         switch (kind) {
-            case Logger.Kind.VERBOSE:
+            case io.beyondwords.player.demo.util.Logger.Kind.VERBOSE:
                 return verboseTextColor;
-            case Logger.Kind.DEBUG:
+            case io.beyondwords.player.demo.util.Logger.Kind.DEBUG:
                 return debugTextColor;
-            case Logger.Kind.WARNING:
+            case io.beyondwords.player.demo.util.Logger.Kind.WARNING:
                 return warnTextColor;
-            case Logger.Kind.ERROR:
+            case io.beyondwords.player.demo.util.Logger.Kind.ERROR:
                 return errorTextColor;
             default:
                 return infoTextColor;
