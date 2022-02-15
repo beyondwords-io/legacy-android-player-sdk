@@ -16,7 +16,7 @@ import androidx.annotation.Dimension;
 import androidx.annotation.NonNull;
 import androidx.core.util.Consumer;
 
-public final class TextViewLogger implements Consumer<io.beyondwords.player.demo.util.Logger.Item> {
+public final class TextViewLogger implements Consumer<Logger.Item> {
     public static final class Builder {
         private final Context context;
 
@@ -115,7 +115,7 @@ public final class TextViewLogger implements Consumer<io.beyondwords.player.demo
     }
 
     @Override
-    public void accept(@NonNull final io.beyondwords.player.demo.util.Logger.Item item) {
+    public void accept(@NonNull Logger.Item item) {
         if (Looper.getMainLooper().getThread() == Thread.currentThread()) {
             print(item);
         } else {
@@ -123,7 +123,7 @@ public final class TextViewLogger implements Consumer<io.beyondwords.player.demo
         }
     }
 
-    private void print(final io.beyondwords.player.demo.util.Logger.Item item) {
+    private void print(final Logger.Item item) {
         final int start = textView.getText().length();
         textView.append(item.msg);
         final int end = textView.getText().length();
@@ -134,20 +134,20 @@ public final class TextViewLogger implements Consumer<io.beyondwords.player.demo
 
     private boolean handle(final Message msg) {
         if (msg.what == 0) {
-            print((io.beyondwords.player.demo.util.Logger.Item) msg.obj);
+            print((Logger.Item) msg.obj);
         }
         return true;
     }
 
-    private int selectColor(@io.beyondwords.player.demo.util.Logger.Kind final int kind) {
+    private int selectColor(@Logger.Kind final int kind) {
         switch (kind) {
-            case io.beyondwords.player.demo.util.Logger.Kind.VERBOSE:
+            case Logger.Kind.VERBOSE:
                 return verboseTextColor;
-            case io.beyondwords.player.demo.util.Logger.Kind.DEBUG:
+            case Logger.Kind.DEBUG:
                 return debugTextColor;
-            case io.beyondwords.player.demo.util.Logger.Kind.WARNING:
+            case Logger.Kind.WARNING:
                 return warnTextColor;
-            case io.beyondwords.player.demo.util.Logger.Kind.ERROR:
+            case Logger.Kind.ERROR:
                 return errorTextColor;
             default:
                 return infoTextColor;

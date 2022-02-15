@@ -2,9 +2,6 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        maven {
-            url 'https://repo.repsy.io/mvn/speechkitio/speechkit_io'
-        }
     }
     dependencies {
         classpath "com.android.tools.build:gradle:$android_buildtools_gradle_version"
@@ -12,21 +9,26 @@ buildscript {
     }
 }
 
+ext {
+    getGithubUser = { project.properties["GITHUB_USER"] }
+    getGithubToken = { project.properties["GITHUB_TOKEN"] }
+}
+
 allprojects {
     repositories {
         google()
         mavenCentral()
         maven {
-            url 'https://repo.repsy.io/mvn/speechkitio/speechkit_io'
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/SpeechKit/beyondwords-android-sdk")
+            credentials {
+                username = getGithubUser()
+                password = getGithubToken()
+            }
         }
     }
 }
 
 task clean(type: Delete) {
     delete rootProject.buildDir
-}
-
-ext {
-    getGithubUser = { project.properties["GITHUB_USER"] }
-    getGithubToken = { project.properties["GITHUB_TOKEN"] }
 }

@@ -81,5 +81,5 @@ dependencies {
     implementation "androidx.fragment:fragment-ktx:$androidx_fragment_version"
     implementation "androidx.constraintlayout:constraintlayout:$androidx_constraintlayout_version"
     implementation "com.google.android.material:material:$google_material_version"
-    implementation "io.speechkit.android:player:$beyondwwords_version"
+    implementation "io.beyondwords.android:player:$beyondwwords_version"
 }
