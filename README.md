@@ -2,41 +2,42 @@
 
 ### 1. Add repositories ###
 
-Due to Bintray/JCenter is sunsetting, the newer versions of the library are located in repsy.io repo.
-- 1.0.7+ versions:
-    ```gradle
-    repositories {
-        ...
-        maven { url 'https://repo.repsy.io/mvn/speechkitio/speechkit_io' }
+```gradle
+ext {
+    // These 2 properties should be stored in your device gradle properties file and should contain your GitHub PAT user and token 
+    getGithubUser = { project.properties["GITHUB_USER"] }
+    getGithubToken = { project.properties["GITHUB_TOKEN"] }
+}
+
+repositories {
+    ...
+    maven {
+        name = "GitHubPackages"
+        url = uri("https://maven.pkg.github.com/SpeechKit/beyondwords-android-sdk")
+        credentials {
+            username = getGithubUser()
+            password = getGithubToken()
+        }
     }
-    ```
+}
+```
 
-- Previous versions:
-    You need to make sure you have [Bintray maven repository](https://bintray.com/) repository in the `build.gradle` file in the root of your project:
-
-    ```gradle
-    repositories {
-        ...
-        maven { url 'https://dl.bintray.com/speechkit/maven' }
-    }
-    ```
-
-### 2. Add the SpeechKit SDK module dependency ###
+### 2. Add the BeyondWords SDK module dependency ###
 
 Next add a dependency in the `build.gradle` file of your app module. The
 following will add a dependency to the library:
 
 ```gradle
-implementation 'io.speechkit.android:player:1.X.X'
+implementation 'io.beyondwords.android:player:2.X.X'
 ```
 
-where `1.X.X` is your preferred version.
-Currently available version is `1.0.15`.
+where `2.X.X` is your preferred version.
+Currently available version is `2.0.0`.
 
 ### 3. Turn on Java 8 support ###
 
 If not enabled already, you also need to turn on Java 8 support in all
-`build.gradle` files depending on the SpeechKit SDK by adding the following to the
+`build.gradle` files depending on the BeyondWords SDK by adding the following to the
 `android` section:
 
 ```gradle
@@ -50,8 +51,8 @@ compileOptions {
 To instantiate a `Player` you have to use the `PlayerBuilder` conatained in the SDK:
 
 ```java
-import io.speechkit.player.Player;
-import io.speechkit.player.PlayerBuilder;
+import io.beyondwords.player.Player;
+import io.beyondwords.player.PlayerBuilder;
 
 ...
 final Player player = PlayerBuilder.forExternalId(context, projectid, externalid)
@@ -79,7 +80,6 @@ player.addListener(new Player.EventListener() {
     public void onPlaybackRate(float rate) {}
 
     public void onEnded() {}
-
 });
 ...
 ```
@@ -93,7 +93,7 @@ When you are done with the player you should call the `release()` method. The pl
 The SDK also conatins a UI-component: `PlaybackControlView`.
 
 ```java
-import io.speechkit.player.PlaybackControlView;
+import io.beyondwords.player.PlaybackControlView;
 ```
 
 To use it simply instantiate it directly and add to the current view hierarchy, or just add it to your xml layout.
@@ -101,9 +101,9 @@ To use it simply instantiate it directly and add to the current view hierarchy, 
 Then bind the player and playback control view:
 
 ```java
-import io.speechkit.player.Player;
-import io.speechkit.player.PlayerBuilder;
-import io.speechkit.player.PlaybackControlView;
+import io.beyondwords.player.Player;
+import io.beyondwords.player.PlayerBuilder;
+import io.beyondwords.player.PlaybackControlView;
 ...
 final Player player = PlayerBuilder.forExternalId(...).build();
 ...
@@ -121,7 +121,7 @@ player = null;
 This can be done in a similar way to play a podcast, you can specify either by using an external id, podcast id or an article url.
 
 ```java
-import io.speechkit.player.Player;
+import io.beyondwords.player.Player;
 
 PodcastRetriever podcastRetriever = new PodcastRetriever();
 
@@ -140,10 +140,10 @@ podcastRetriever.getViaArticleUrl(projectId, articleUrl, listener)
 
 Run the following command in the terminal:
 ```
-git clone https://github.com/SpeechKit/speechkit-android-sdk-public.git ./speechkit_sdk_demo
+git clone https://github.com/SpeechKit/beyondwords-android-sdk-public.git ./beyondwords_sdk_demo
 ```
 
 Then import the project to Android Studio:
 ```
-File -> New -> Import Project… (navigate to speechkit_sdk_demo dir)
+File -> New -> Import Project… (navigate to beyondwords_sdk_demo dir)
 ```
