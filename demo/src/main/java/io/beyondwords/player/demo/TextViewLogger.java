@@ -1,20 +1,20 @@
-package io.speechkit.player.demo.util;
+package io.beyondwords.player.demo;
 
+import android.content.Context;
+import android.graphics.Color;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
+import android.text.Spannable;
 import android.text.method.ScrollingMovementMethod;
 import android.text.style.ForegroundColorSpan;
 import android.util.TypedValue;
 import android.widget.TextView;
-import android.content.Context;
-import android.graphics.Color;
-import android.text.Spannable;
-import android.os.Handler;
-import android.os.Message;
-import android.os.Looper;
 
-import androidx.annotation.NonNull;
-import androidx.core.util.Consumer;
 import androidx.annotation.ColorInt;
 import androidx.annotation.Dimension;
+import androidx.annotation.NonNull;
+import androidx.core.util.Consumer;
 
 public final class TextViewLogger implements Consumer<Logger.Item> {
     public static final class Builder {
@@ -115,7 +115,7 @@ public final class TextViewLogger implements Consumer<Logger.Item> {
     }
 
     @Override
-    public void accept(@NonNull final Logger.Item item) {
+    public void accept(@NonNull Logger.Item item) {
         if (Looper.getMainLooper().getThread() == Thread.currentThread()) {
             print(item);
         } else {

@@ -1,18 +1,17 @@
-package io.speechkit.player.demo.util;
-
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.concurrent.CopyOnWriteArraySet;
+package io.beyondwords.player.demo;
 
 import android.os.Looper;
 import android.util.Log;
 
 import androidx.annotation.AnyThread;
 import androidx.annotation.IntDef;
-import androidx.annotation.NonNull;
 import androidx.core.util.Consumer;
+
+import java.lang.annotation.Retention;
+import java.lang.annotation.RetentionPolicy;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.concurrent.CopyOnWriteArraySet;
 
 public final class Logger {
     @Retention(RetentionPolicy.SOURCE)

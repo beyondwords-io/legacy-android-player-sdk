@@ -1,17 +1,31 @@
 buildscript {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
     }
     dependencies {
-        classpath "com.android.tools.build:gradle:${rootProject.property('android-buildtools-gradle.version')}"
+        classpath "com.android.tools.build:gradle:$android_buildtools_gradle_version"
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
+}
+
+ext {
+    getGithubUser = { project.properties["GITHUB_USER"] }
+    getGithubToken = { project.properties["GITHUB_TOKEN"] }
 }
 
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
+        maven {
+            name = "GitHubPackages"
+            url = uri("https://maven.pkg.github.com/SpeechKit/beyondwords-android-sdk")
+            credentials {
+                username = getGithubUser()
+                password = getGithubToken()
+            }
+        }
     }
 }
 

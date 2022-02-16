@@ -1,27 +1,24 @@
-package io.speechkit.player.demo;
+package io.beyondwords.player.demo;
 
-import java.lang.reflect.Field;
-
+import android.app.Activity;
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import android.view.ViewGroup;
-import android.view.Gravity;
-import android.app.Activity;
-import android.view.View;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.ColorInt;
 import androidx.annotation.LayoutRes;
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import io.speechkit.player.Player;
+import java.lang.reflect.Field;
 
-import io.speechkit.player.PlayerException;
-import io.speechkit.player.demo.util.Logger;
-import io.speechkit.player.demo.util.TextViewLogger;
+import io.beyondwords.player.Player;
+import io.beyondwords.player.PlayerException;
 
 public final class PlayerConsoleView implements Player.EventListener {
     private static final String TAG = "PlayerConsole";
@@ -129,7 +126,9 @@ public final class PlayerConsoleView implements Player.EventListener {
 
     @Override
     public void onPlay(float duration, float progress, @Nullable String advertiser, @Nullable String adUrl) {
-        logger.i(TAG, "onPlay, progress=" + progress + ", duration=" + duration + ", advertiser=" + advertiser + ", adUrl=" + adUrl);
+        logger.i(TAG, "onPlay, progress=" + progress + ", duration=" + duration);
+        logger.i(TAG, "onPlay, advertiser=" + advertiser + ", adUrl=" + adUrl);
+
     }
 
     @Override

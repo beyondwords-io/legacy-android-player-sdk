@@ -1,38 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffffff">
+    android:padding="@dimen/keyline_2">
+
+    <ImageView
+        android:id="@+id/main_brand_logo"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/logo_height"
+        android:src="@drawable/bw_logo"
+        app:layout_constraintTop_toTopOf="parent" />
+
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/player_projectid_text_input"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_marginTop="@dimen/keyline_2"
         android:hint="@string/player_projectid"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintTop_toBottomOf="@id/main_brand_logo">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:singleLine="true"
-            android:inputType="numberDecimal"/>
+            android:inputType="numberDecimal"
+            android:singleLine="true" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <FrameLayout android:id="@+id/load_externalid_layout"
+    <FrameLayout
+        android:id="@+id/load_externalid_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@id/player_projectid_text_input"
-        app:layout_constraintEnd_toEndOf="@id/player_projectid_text_input">
+        android:layout_marginTop="@dimen/keyline_2"
+        app:layout_constraintEnd_toEndOf="@id/player_projectid_text_input"
+        app:layout_constraintTop_toBottomOf="@id/player_projectid_text_input">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/load_externalid_btn"
@@ -40,12 +47,6 @@
             app:layout_constraintEnd_toEndOf="@id/player_projectid_text_input"
             app:layout_constraintTop_toBottomOf="@id/player_projectid_text_input" />
 
-        <ProgressBar
-            android:id="@+id/load_externalid_spinner"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:visibility="gone"/>
 
     </FrameLayout>
 
@@ -53,40 +54,34 @@
         android:id="@+id/player_externalid_text_input"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
+        android:layout_marginEnd="@dimen/keyline_1"
         android:hint="@string/player_externalid"
-        app:layout_constraintStart_toStartOf="@+id/player_projectid_text_input"
+        android:textAlignment="center"
+        app:layout_constraintBottom_toBottomOf="@id/load_externalid_layout"
         app:layout_constraintEnd_toStartOf="@id/load_externalid_layout"
-        app:layout_constraintTop_toTopOf="@id/load_externalid_layout"
-        app:layout_constraintBottom_toBottomOf="@id/load_externalid_layout">
+        app:layout_constraintStart_toStartOf="@+id/player_projectid_text_input"
+        app:layout_constraintTop_toTopOf="@id/load_externalid_layout">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:singleLine="true"/>
+            android:singleLine="true" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <FrameLayout android:id="@+id/load_podcastid_layout"
+    <FrameLayout
+        android:id="@+id/load_podcastid_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@id/load_externalid_layout"
+        android:layout_marginTop="@dimen/keyline_2"
+        app:layout_constraintEnd_toEndOf="@id/load_externalid_layout"
         app:layout_constraintStart_toStartOf="@id/load_externalid_layout"
-        app:layout_constraintEnd_toEndOf="@id/load_externalid_layout">
+        app:layout_constraintTop_toBottomOf="@id/load_externalid_layout">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/load_podcastid_btn"
             style="@style/LoadButton"
             android:layout_width="match_parent" />
-
-        <ProgressBar
-            android:id="@+id/load_podcastid_spinner"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:visibility="gone" />
 
     </FrameLayout>
 
@@ -95,38 +90,32 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/player_podcastid"
-        app:layout_constraintStart_toStartOf="@id/player_projectid_text_input"
+        app:layout_constraintBottom_toBottomOf="@id/load_podcastid_layout"
         app:layout_constraintEnd_toEndOf="@id/player_externalid_text_input"
-        app:layout_constraintTop_toTopOf="@id/load_podcastid_layout"
-        app:layout_constraintBottom_toBottomOf="@id/load_podcastid_layout">
+        app:layout_constraintStart_toStartOf="@id/player_projectid_text_input"
+        app:layout_constraintTop_toTopOf="@id/load_podcastid_layout">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="numberDecimal"
-            android:singleLine="true"/>
+            android:singleLine="true" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <FrameLayout android:id="@+id/load_articleurl_layout"
+    <FrameLayout
+        android:id="@+id/load_articleurl_layout"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        app:layout_constraintTop_toBottomOf="@id/load_podcastid_layout"
+        android:layout_marginTop="@dimen/keyline_2"
+        app:layout_constraintEnd_toEndOf="@id/load_externalid_layout"
         app:layout_constraintStart_toStartOf="@id/load_externalid_layout"
-        app:layout_constraintEnd_toEndOf="@id/load_externalid_layout">
+        app:layout_constraintTop_toBottomOf="@id/load_podcastid_layout">
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/load_articleurl_btn"
             style="@style/LoadButton"
             android:layout_width="match_parent" />
-
-        <ProgressBar
-            android:id="@+id/load_articleurl_spinner"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="center"
-            android:visibility="gone" />
 
     </FrameLayout>
 
@@ -135,44 +124,63 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="@string/player_articleurl"
-        app:layout_constraintStart_toStartOf="@id/player_projectid_text_input"
+        app:layout_constraintBottom_toBottomOf="@id/load_articleurl_layout"
         app:layout_constraintEnd_toEndOf="@id/player_externalid_text_input"
-        app:layout_constraintTop_toTopOf="@id/load_articleurl_layout"
-        app:layout_constraintBottom_toBottomOf="@id/load_articleurl_layout">
+        app:layout_constraintStart_toStartOf="@id/player_projectid_text_input"
+        app:layout_constraintTop_toTopOf="@id/load_articleurl_layout">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:singleLine="true"/>
+            android:singleLine="true" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <CheckBox
-        android:id="@+id/player_use_ui_btn"
+        android:id="@+id/player_display_notification_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/keyline_2"
         android:checked="true"
-        android:text="@string/player_use_ui"
+        android:text="@string/player_display_notification"
         android:textSize="16sp"
-        android:layout_marginTop="8dp"
         app:layout_constraintStart_toStartOf="@id/player_articleurl_text_input"
         app:layout_constraintTop_toBottomOf="@id/load_articleurl_layout" />
 
-    <io.speechkit.player.PlaybackControlView
+    <ProgressBar
+        android:id="@+id/loading_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/keyline_2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/player_display_notification_btn" />
+
+    <TextView
+        android:id="@+id/loading_progress_message"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/keyline_1"
+        app:layout_constraintBottom_toBottomOf="@id/loading_progress_bar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/loading_progress_bar"
+        app:layout_constraintTop_toTopOf="@id/loading_progress_bar"
+        tools:text="Loading podcast" />
+
+    <io.beyondwords.player.PlaybackControlView
         android:id="@+id/playback_control_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/keyline_1"
         android:visibility="gone"
-        android:layout_marginBottom="8dp"
         app:layout_constraintBottom_toTopOf="@id/lib_version_view"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/lib_version_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="10sp"
+        android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
 
