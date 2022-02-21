@@ -32,7 +32,7 @@ implementation 'io.beyondwords.android:player:2.X.X'
 ```
 
 where `2.X.X` is your preferred version.
-Currently available version is `2.0.0`.
+Currently available version is `2.0.1`.
 
 ### 3. Turn on Java 8 support ###
 
