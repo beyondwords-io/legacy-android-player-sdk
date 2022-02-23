@@ -9,22 +9,12 @@ buildscript {
     }
 }
 
-ext {
-    getGithubUser = { project.properties["GITHUB_USER"] }
-    getGithubToken = { project.properties["GITHUB_TOKEN"] }
-}
-
 allprojects {
     repositories {
         google()
         mavenCentral()
         maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/SpeechKit/beyondwords-android-sdk")
-            credentials {
-                username = getGithubUser()
-                password = getGithubToken()
-            }
+            url 'https://repo.repsy.io/mvn/speechkitio/speechkit_io'
         }
     }
 }
