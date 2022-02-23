@@ -3,21 +3,10 @@
 ### 1. Add repositories ###
 
 ```gradle
-ext {
-    // These 2 properties should be stored in your device gradle properties file and should contain your GitHub PAT user and token 
-    getGithubUser = { project.properties["GITHUB_USER"] }
-    getGithubToken = { project.properties["GITHUB_TOKEN"] }
-}
-
 repositories {
     ...
     maven {
-        name = "GitHubPackages"
-        url = uri("https://maven.pkg.github.com/SpeechKit/beyondwords-android-sdk")
-        credentials {
-            username = getGithubUser()
-            password = getGithubToken()
-        }
+        maven { url 'https://repo.repsy.io/mvn/speechkitio/speechkit_io' }
     }
 }
 ```
