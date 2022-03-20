@@ -1,4 +1,4 @@
-package io.beyondwords.player.demo;
+package io.beyondwords.player.demo.util;
 
 import android.os.Looper;
 import android.util.Log;

@@ -1,4 +1,4 @@
-package io.beyondwords.player.demo;
+package io.beyondwords.player.demo.util;
 
 import android.content.Context;
 import android.graphics.Color;
@@ -115,7 +115,7 @@ public final class TextViewLogger implements Consumer<Logger.Item> {
     }
 
     @Override
-    public void accept(@NonNull Logger.Item item) {
+    public void accept(@NonNull final Logger.Item item) {
         if (Looper.getMainLooper().getThread() == Thread.currentThread()) {
             print(item);
         } else {

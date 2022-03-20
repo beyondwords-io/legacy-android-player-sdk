@@ -14,7 +14,6 @@
         android:src="@drawable/bw_logo"
         app:layout_constraintTop_toTopOf="parent" />
 
-
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/player_projectid_text_input"
         android:layout_width="0dp"
@@ -46,7 +45,6 @@
             style="@style/LoadButton"
             app:layout_constraintEnd_toEndOf="@id/player_projectid_text_input"
             app:layout_constraintTop_toBottomOf="@id/player_projectid_text_input" />
-
 
     </FrameLayout>
 
@@ -147,13 +145,23 @@
         app:layout_constraintStart_toStartOf="@id/player_articleurl_text_input"
         app:layout_constraintTop_toBottomOf="@id/load_articleurl_layout" />
 
+    <CheckBox
+        android:id="@+id/player_use_skinned_player_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:checked="false"
+        android:text="@string/use_customised_player"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@id/player_articleurl_text_input"
+        app:layout_constraintTop_toBottomOf="@id/player_display_notification_btn" />
+
     <ProgressBar
         android:id="@+id/loading_progress_bar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/keyline_2"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/player_display_notification_btn" />
+        app:layout_constraintTop_toBottomOf="@id/player_use_skinned_player_btn" />
 
     <TextView
         android:id="@+id/loading_progress_message"

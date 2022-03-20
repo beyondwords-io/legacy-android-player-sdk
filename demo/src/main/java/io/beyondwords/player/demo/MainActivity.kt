@@ -7,10 +7,13 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
+import android.view.ViewGroup
 import android.view.inputmethod.InputMethodManager
 import android.widget.CheckBox
 import android.widget.ProgressBar
 import android.widget.TextView
+import androidx.annotation.ColorInt
+import androidx.annotation.ColorRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
@@ -37,7 +40,9 @@ class MainActivity : AppCompatActivity(), Player.EventListener {
     private var loadingProgressBar: ProgressBar? = null
     private var loadingProgressText: TextView? = null
     private var displayNotificationBtn: CheckBox? = null
+    private var useSkinnedPlayerBtn: CheckBox? = null
     private var libVersionView: TextView? = null
+    private var rootLayout: ViewGroup? = null
     private var player: Player? = null
     private var prefs: Prefs? = null
 
@@ -67,6 +72,7 @@ class MainActivity : AppCompatActivity(), Player.EventListener {
         setContentView(R.layout.main_activity)
         prefs = Prefs(context = this)
 
+        rootLayout = findViewById(R.id.root)
         console = PlayerConsoleView(this, ContextCompat.getColor(this, R.color.playerConsoleScrim))
         controls = findViewById(R.id.playback_control_view)
 
@@ -77,6 +83,7 @@ class MainActivity : AppCompatActivity(), Player.EventListener {
         loadingProgressText = findViewById(R.id.loading_progress_message)
         displayNotificationBtn = findViewById(R.id.player_display_notification_btn)
         libVersionView = findViewById(R.id.lib_version_view)
+        useSkinnedPlayerBtn = findViewById(R.id.player_use_skinned_player_btn)
 
         projectIdEditor = findViewById<TextInputLayout>(R.id.player_projectid_text_input).apply {
             val projectId = prefs?.projectId ?: DEFAULT_PROJECT_ID
@@ -114,11 +121,42 @@ class MainActivity : AppCompatActivity(), Player.EventListener {
             loadFromArticleUrl()
         }
 
+        useSkinnedPlayerBtn?.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) {
+                customisePlayerUi()
+            } else {
+                controls?.resetPlayerUi()
+            }
+        }
+
         loadingProgressBar?.isVisible = false
         loadingProgressText?.isVisible = false
 
         initialiseLibraryVersionText()
     }
+
+    private fun customisePlayerUi() {
+        controls?.apply {
+            setProgressHeight(resources.getDimensionPixelSize(R.dimen.keyline_1))
+            setRoundedProgressCorners(true)
+            setBackgroundColour(getColour(R.color.alternative_background_colour))
+            setTitleTextColour(getColour(R.color.white))
+            setTitleLinkTextColour(getColour(R.color.white))
+            setSpeedTextColour(getColour(R.color.white))
+            setProgressTextColour(getColour(R.color.white))
+            setPlayPauseColour(getColour(R.color.white))
+            setLogoTextColour(getColour(R.color.white))
+            setBackgroundCornerRadius(resources.getDimension(R.dimen.keyline_1))
+            setProgressBackgroundColour(getColour(R.color.alternative_progress_background_colour))
+            setProgressPlayedColour(getColour(R.color.white))
+            setProgressUnplayedColour(getColour(R.color.white))
+            setProgressBufferedColour(getColour(R.color.alternative_progress_buffered_colour))
+            updatePlayPauseIcons(R.drawable.ic_alt_play_icon, R.drawable.ic_alt_pause_icon)
+        }
+    }
+
+    @ColorInt
+    private fun getColour(@ColorRes colour: Int) = ContextCompat.getColor(this, colour)
 
     override fun onDestroy() {
         Log.v(TAG, "onDestroy")
@@ -188,8 +226,10 @@ class MainActivity : AppCompatActivity(), Player.EventListener {
 
     private fun hideKeyboard() {
         val keyboard = getSystemService(INPUT_METHOD_SERVICE) as InputMethodManager
-        keyboard.hideSoftInputFromWindow(window.decorView.rootView.windowToken,
-                InputMethodManager.HIDE_NOT_ALWAYS)
+        keyboard.hideSoftInputFromWindow(
+            window.decorView.rootView.windowToken,
+            InputMethodManager.HIDE_NOT_ALWAYS
+        )
     }
 
     private fun loadFromExternalId() {
@@ -260,9 +300,9 @@ class MainActivity : AppCompatActivity(), Player.EventListener {
         releasePlayer()
 
         player = builder
-                .setPendingIntent(createLaunchIntent())
-                .enableUi(isChecked)
-                .build()
+            .setPendingIntent(createLaunchIntent())
+            .enableUi(isChecked)
+            .build()
         player?.addListener(this)
         console?.setPlayer(player)
     }
@@ -295,9 +335,9 @@ class MainActivity : AppCompatActivity(), Player.EventListener {
     }
 
     private fun initialiseLibraryVersionText() {
-        libVersionView?.text = String.format(getString(R.string.library_version_template),
-                BuildConfig.LIB_VERSION,
-                BuildConfig.BUILD_TYPE.lowercase()
+        libVersionView?.text = String.format(
+            BuildConfig.LIB_VERSION,
+            BuildConfig.BUILD_TYPE.lowercase(),
         )
     }
 }
