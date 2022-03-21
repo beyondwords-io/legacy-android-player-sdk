@@ -9,4 +9,8 @@
     <color name="black">#1D1821</color>
     <color name="silver">#DBDBDB</color>
 
+    <color name="alternative_background_colour">#0C274E</color>
+    <color name="alternative_progress_background_colour">#325271</color>
+    <color name="alternative_progress_buffered_colour">#274059</color>
+
 </resources>

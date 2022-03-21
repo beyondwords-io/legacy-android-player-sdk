@@ -1,24 +1,27 @@
 package io.beyondwords.player.demo;
 
-import android.app.Activity;
-import android.view.Gravity;
+import java.lang.reflect.Field;
+
 import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.TextView;
+import android.view.ViewGroup;
+import android.view.Gravity;
+import android.app.Activity;
+import android.view.View;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.ColorInt;
 import androidx.annotation.LayoutRes;
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
-import java.lang.reflect.Field;
-
 import io.beyondwords.player.Player;
+
 import io.beyondwords.player.PlayerException;
+import io.beyondwords.player.demo.util.Logger;
+import io.beyondwords.player.demo.util.TextViewLogger;
 
 public final class PlayerConsoleView implements Player.EventListener {
     private static final String TAG = "PlayerConsole";

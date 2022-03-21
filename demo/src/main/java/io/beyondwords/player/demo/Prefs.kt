@@ -9,7 +9,7 @@ private const val KEY_EXTERNAL_ID = "player_externalid"
 private const val KEY_PODCAST_ID = "player_podcastid"
 private const val KEY_ARTICLE_ID = "player_articleurl"
 const val DEFAULT_PROJECT_ID = "9093"
-const val DEFAULT_PODCAST_ID = "2506678"
+const val DEFAULT_PODCAST_ID = "2653378"
 
 internal class Prefs(context: Context) {
 

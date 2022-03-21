@@ -25,4 +25,5 @@
 
     <string name="library_version_template" translatable="false">lib v%1$s/%2$s)</string>
     <string name="player_display_notification" translatable="false">Display notification</string>
+    <string name="use_customised_player" translatable="false">Use customised player</string>
 </resources>
