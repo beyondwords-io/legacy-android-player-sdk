@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity(), Player.EventListener {
     private var loadingProgressText: TextView? = null
     private var displayNotificationBtn: CheckBox? = null
     private var useSkinnedPlayerBtn: CheckBox? = null
+    private var displayFastForwardRewindBtn: CheckBox? = null
     private var libVersionView: TextView? = null
     private var rootLayout: ViewGroup? = null
     private var player: Player? = null
@@ -84,6 +85,7 @@ class MainActivity : AppCompatActivity(), Player.EventListener {
         displayNotificationBtn = findViewById(R.id.player_display_notification_btn)
         libVersionView = findViewById(R.id.lib_version_view)
         useSkinnedPlayerBtn = findViewById(R.id.player_use_skinned_player_btn)
+        displayFastForwardRewindBtn = findViewById(R.id.player_display_ff_rewind_buttons_btn)
 
         projectIdEditor = findViewById<TextInputLayout>(R.id.player_projectid_text_input).apply {
             val projectId = prefs?.projectId ?: DEFAULT_PROJECT_ID
@@ -129,6 +131,10 @@ class MainActivity : AppCompatActivity(), Player.EventListener {
             }
         }
 
+        displayFastForwardRewindBtn?.setOnCheckedChangeListener { _, isChecked ->
+            controls?.setFastForwardRewindDisplayed(isChecked)
+        }
+
         loadingProgressBar?.isVisible = false
         loadingProgressText?.isVisible = false
 
@@ -145,7 +151,7 @@ class MainActivity : AppCompatActivity(), Player.EventListener {
             setSpeedTextColour(getColour(R.color.white))
             setProgressTextColour(getColour(R.color.white))
             setPlayPauseColour(getColour(R.color.white))
-            setLogoTextColour(getColour(R.color.white))
+            setFastForwardRewindIconColour(getColour(R.color.white))
             setBackgroundCornerRadius(resources.getDimension(R.dimen.keyline_1))
             setProgressBackgroundColour(getColour(R.color.alternative_progress_background_colour))
             setProgressPlayedColour(getColour(R.color.white))
@@ -336,8 +342,9 @@ class MainActivity : AppCompatActivity(), Player.EventListener {
 
     private fun initialiseLibraryVersionText() {
         libVersionView?.text = String.format(
+            getString(R.string.library_version_template),
             BuildConfig.LIB_VERSION,
-            BuildConfig.BUILD_TYPE.lowercase(),
+            BuildConfig.BUILD_TYPE.lowercase()
         )
     }
 }
