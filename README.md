@@ -43,7 +43,7 @@ implementation 'io.beyondwords.android:player:2.X.X'
 ```
 
 where `2.X.X` is your preferred version.
-Currently available version is `2.0.2`.
+Currently available version is `2.1.0`.
 
 ### 3. Turn on Java 8 support ###
 
@@ -59,7 +59,7 @@ compileOptions {
 
 ## Usage
 
-To instantiate a `Player` you have to use the `PlayerBuilder` conatained in the SDK:
+To instantiate a `Player` you have to use the `PlayerBuilder` contained in the SDK:
 
 ```kotlin
 import io.beyondwords.player.Player
@@ -101,7 +101,7 @@ When you are done with the player you should call the `release()` method. The pl
 
 ## Customising the default player UI
 
-The SDK also conatins a UI-component: `PlaybackControlView`.
+The SDK also contains a UI-component: `PlaybackControlView`.
 
 ```kotlin
 import io.beyondwords.player.PlaybackControlView
@@ -150,22 +150,22 @@ podcastRetriever.getViaArticleUrl(projectId, articleUrl, listener)
 
 The player can be styled from either code, xml or overriding xml resources
 
-| Code         | XML           | Rersource override    |
+| Code         | XML           | Resource override    |
 | ---------- | --------------- | ----------------------|
-| playbackControlView.setRoundedProgressCorners | app:bw_rounded_progress_corners="false" | <bool name="bw_progress_rounded_corners"></bool> |
-| playbackControlView.setBackgroundColour | app:bw_background_colour |  <color name="bw_background_colour"></color> |
-| playbackControlView.setTitleTextColour | app:bw_title_text_colour | <color name="bw_title_text_colour"></color> |
-| playbackControlView.setTitleLinkTextColour | app:bw_title_link_colour | <color name="bw_title_link_text_colour"></color> |
-| playbackControlView.setSpeedTextColour | app:bw_speed_text_colour | <color name="bw_speed_text_colour"></color> |
-| playbackControlView.setProgressTextColour | app:bw_progress_text_colour | <color name="bw_progress_text_colour"></color> |
-| playbackControlView.setPlayPauseColour | app:bw_play_pause_colour | <color name="bw_play_button_colour"></color> |
-| playbackControlView.setLogoTextColour | app:bw_logo_text_colour | <color name="bw_logo_colour"></color> |
-| playbackControlView.setCopyrightTextColour | app:bw_copyright_text_colour | <color name="bw_copyright_text_colour"></color> |
-| playbackControlView.setBackgroundCornerRadius | app:bw_background_corner_radius | <dimen name="bw_background_corner_radius"></dimen> |
-| playbackControlView.setProgressHeight | app:bw_progress_height |  <dimen name="bw_progress_height"></dimen> |
-| playbackControlView.setProgressBackgroundColour | app:bw_progress_background_colour | <color name="bw_progress_background_colour"></color> |
-| playbackControlView.setProgressPlayedColour | app:bw_progress_played_colour | <color name="bw_progress_played_colour"></color> |
-| playbackControlView.setProgressBufferedColour | app:bw_progress_buffered_colour | <color name="bw_progress_buffered_colour"></color> |
+| playbackControlView.setRoundedProgressCorners | app:bw_rounded_progress_corners="false" | ```<bool name="bw_progress_rounded_corners"></bool>``` |
+| playbackControlView.setBackgroundColour | app:bw_background_colour |  ```<color name="bw_background_colour"></color>``` |
+| playbackControlView.setTitleTextColour | app:bw_title_text_colour | ```<color name="bw_title_text_colour"></color>``` |
+| playbackControlView.setTitleLinkTextColour | app:bw_title_link_colour | ```<color name="bw_title_link_text_colour"></color>``` |
+| playbackControlView.setSpeedTextColour | app:bw_speed_text_colour | ```<color name="bw_speed_text_colour"></color>``` |
+| playbackControlView.setProgressTextColour | app:bw_progress_text_colour | ```<color name="bw_progress_text_colour"></color>``` |
+| playbackControlView.setPlayPauseColour | app:bw_play_pause_colour | ```<color name="bw_play_button_colour"></color>``` |
+| playbackControlView.setFastForwardRewindIconColour | app:bw_ff_rewind_icon_colour | ```<color name="bw_ff_rewind_icon_colour"></color>``` |
+| playbackControlView.setFastForwardRewindDisplayed | app:bw_ff_rewind_icon_displayed | ```<bool name="bw_ff_rewind_icon_displayed"></bool>``` |
+| playbackControlView.setBackgroundCornerRadius | app:bw_background_corner_radius | ```<dimen name="bw_background_corner_radius"></dimen>``` |
+| playbackControlView.setProgressHeight | app:bw_progress_height |  ```<dimen name="bw_progress_height"></dimen>``` |
+| playbackControlView.setProgressBackgroundColour | app:bw_progress_background_colour | ```<color name="bw_progress_background_colour"></color>``` |
+| playbackControlView.setProgressPlayedColour | app:bw_progress_played_colour | ```<color name="bw_progress_played_colour"></color>``` |
+| playbackControlView.setProgressBufferedColour | app:bw_progress_buffered_colour | ```<color name="bw_progress_buffered_colour"></color>``` |
 | playbackControlView.updatePlayPauseIcons | app:bw_play_button_img and app:bw_pause_button_img  | R.drawable.ic_bw_play and R.drawable.ic_bw_pause |
 
 ## Added sticky player helper

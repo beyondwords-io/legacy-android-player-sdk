@@ -23,7 +23,8 @@
     <string name="player_loading_from_podcast_id" translatable="false">Loading from podcast id</string>
     <string name="player_loading_from_article_url" translatable="false">Loading from article url</string>
 
-    <string name="library_version_template" translatable="false">lib v%1$s/%2$s)</string>
+    <string name="library_version_template" translatable="false">lib v%1$s/%2$s</string>
     <string name="player_display_notification" translatable="false">Display notification</string>
     <string name="use_customised_player" translatable="false">Use customised player</string>
+    <string name="display_ff_rewind_buttons" translatable="false">Display fast-forward/rewind</string>
 </resources>
