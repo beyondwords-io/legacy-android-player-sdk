@@ -57,47 +57,90 @@ compileOptions {
 }
 ```
 
-## Usage
+# Usage
+
+## Initialising the player
 
 To instantiate a `Player` you have to use the `PlayerBuilder` contained in the SDK:
+
+A `PlayerBuilder` instance is created from one of the following functions
+
+### Via Podcast ID
+`val builder = PlayerBuilder.forPodcastId(context, 1234, 5678)`
+
+#### Parameters
+##### `context: Context` 
+Context used to create the `Player`
+
+##### `projectId: Long`
+Id of the BeyondWords project ID
+
+##### `podcastId: Long`
+BeyondWords podcast ID
+
+### Via External ID
+`val builder = PlayerBuilder.forExternalId(context, 1234, "external id")`
+
+#### Parameters
+##### `context: Context` 
+Context used to create the `Player`
+
+##### `projectId: Long`
+Id of the BeyondWords project ID
+
+##### `externalId: Long`
+The internal article ID
+
+### Via Article URL
+`val builder = PlayerBuilder.forArticleUrl(context, 1234, "article url")`
+
+#### Parameters
+##### `context: Context`
+Context used to create the `Player`
+
+##### `projectId: Long`
+Id of the BeyondWords project ID
+
+##### `articleUrl: String`
+The article url
+
+## Configuring the player builder
 
 ```kotlin
 import io.beyondwords.player.Player
 import io.beyondwords.player.PlayerBuilder
 
-...
 val player = PlayerBuilder.forExternalId(context, projectid, externalid)
     .setPendingIntent(createPendingLaunchIntent())
     .enableUi(true)
+    .setNotificationChannelId("notificationChannelId")
+    .setNotificationId(1234)
+    .setNotificationChannelNameId(R.string.my_custom_channel_name)
+    .setNotificationChannelDescriptionId(R.string.my_custom_channel_description)
+    .setNotificationSmallIconId(R.drawable.my_custom_small_notification_icon)
+    .setNotificationLargeIconId(R.drawable.my_custom_large_notification_icon)
     .build()
-...
 ```
 
-After creating a player, you can subscribe to its events:
-
-```java
+## Subscribing to events
+```kotlin
 ...
 val player = PlayerBuilder.forExternalId(...).build()
-...
+
 player.addListener(object::Player.EventListener() {
     override void onPrepare() {}
 
-    override void onPlay(float duration, float progress, @Nullable String advertiser, @Nullable String adUrl) { }
+    override void onPlay(duration: Float, progress: Float, advertiser: String?, adUrl: String?) { }
 
-    override void onPause(float durationSec, float progressSec) {}
+    override void onPause(durationSec: Float, progressSec: Float) {}
 
-    override void onTimeUpdate(float durationSec, float progressSec) {}
+    override void onTimeUpdate(durationSec: Float, progressSec: Float) {}
 
-    override void onPlaybackRate(float rate) {}
+    override void onPlaybackRate(rate: Float) {}
 
     override void onEnded() {}
-});
-...
+})
 ```
-
-Player provides standard methods like: `play()/pause()`, `rewind()/fastForward()`, `seekTo()` and so on.
-
-When you are done with the player you should call the `release()` method. The player must not be used after calling this method.
 
 ## Customising the default player UI
 
@@ -191,3 +234,165 @@ Then import the project to Android Studio:
 ```
 File -> New -> Import Project… (navigate to beyondwords_sdk_demo dir)
 ```
+
+# Public API Documentation
+
+## PlayerBuilder
+
+#### `setPendingIntent(intent: PendingIntent?)`
+`PendingIntent` to launch when clicking on the notification.
+
+#### `enableUi(enabledUi: Boolean)`
+Flag to toggle whether a notification should be shown or not.
+
+#### `setNotificationChannelId(notificationChannelId: String)`
+Set the notification channel id.
+
+#### `setNotificationId(notificationId: Int)`
+Set the notification id.
+
+#### `setNotificationChannelNameId(@StringRes notificationChannelNameId: Int)`
+App string resource for the channel name id .
+
+#### `setNotificationChannelDescriptionId(@StringRes notificationChannelDescriptionId: Int)`
+App string resource for the channel description id.
+
+#### `setNotificationSmallIconId(@DrawableRes notificationSmallIconId: Int)`
+App drawable resource for the small notification icon.
+
+#### `setNotificationLargeIconId(@DrawableRes notificationLargeIconId: Int)`
+App drawable resource for the large notification icon.
+
+## Player
+
+#### `fun release()`
+Releases the player. This must be called when the player is no longer required. The player must not be used after calling this method.
+
+#### `fun addListener(listener: EventListener)`
+Register a listener to receive events from the player. The listener's methods will be called on the thread that was used to construct the player. However, if the thread used to construct the player does not have a Looper, then the listener will be called on the main thread.
+
+#### `fun removeListener(EventListener listener)`
+Unregister a listener. The listener will no longer receive events from the player.
+
+#### `fun isPrepared(): Boolean`
+Whether the player is prepared.
+
+#### `fun isReady(): Boolean`
+Whether the player is ready for playback.
+
+#### `fun isPlaying(): Boolean`
+Whether the player is playing.
+
+#### `fun isPaused(): Boolean`
+Determine if the player is currently paused.
+
+#### `fun isEnded(): Boolean`
+Determine if the player has ended.
+
+#### `fun play()`
+Begin playback of the audio.
+
+#### `fun pause()`
+Pause audio playback
+
+#### `fun fastForward()`
+Fast forward the audio playback by 10 seconds
+
+#### `fun rewind()`
+Rewind the audio playback by 10 seconds
+
+#### `fun seekTo(positionMs: Long)`
+Moves to a new location in the media
+<br>`positionMs` Position to move to, in milliseconds
+
+#### `fun getCurrentTime(): Float`
+Get the current time, in seconds
+
+#### `fun getBufferedTime(): Float`
+Returns an estimate of the position in the current content up to which data is buffered, in seconds.
+
+#### `fun getDuration(): Float`
+Get the total duration of the audio article, in seconds
+
+#### `fun getRemainingTime(): Float`
+Get the time remaining on the audio article, in seconds
+
+#### `fun isPlayingAd(): Boolean`
+Check whether we're playing an unskippable ad
+
+#### `fun getPlaybackRate(): Float`
+Get the playback rate
+
+#### `fun setPlaybackRate(rate: Float): Float`
+Set the playback rate
+
+## `PlaybackControlsView`
+
+#### `fun getPlayer(): Player`
+Get the `Player` used in the view
+
+#### `fun setPlayer(player: Player)`
+Set the `Player` used in the view
+
+#### `fun setPlayPauseColour(@ColorInt colour: Int)`
+Set the colour of the play/pause buttons
+
+#### `fun setTitleTextColour(@ColorInt colour: Int)`
+Set the colour of the title text
+
+#### `fun setTitleLinkTextColour(@ColorInt colour: Int)`
+Set the colour of the title link text
+
+#### `fun setProgressTextColour(@ColorInt colour: Int)`
+Set the colour of the progress text
+
+#### `fun setSpeedTextColour(@ColorInt colour: Int)`
+Set the colour of the playback speed text
+
+#### `fun setBackgroundColour(@ColorInt colour: Int)`
+Set the colour of the player background
+
+#### `fun setBackgroundCornerRadius(radius: Float)`
+Set the background corner radius
+
+#### `fun setFastForwardRewindIconColour(@ColorInt colour: Int)`
+Set the colour of the fast-forward/rewind icons
+
+#### `fun setFastForwardRewindDisplayed(isDisplayed: Boolean)`
+Flag to display or hide the fast-forward/rewind buttons.
+
+#### `fun setRoundedProgressCorners(hasRoundedCorners: Boolean)`
+Set if the progress has rounded corners or not.
+
+#### `fun setProgressHeight(height: Int)`
+Set the height of the playback progress bar
+
+#### `fun setProgressBufferedColour(@ColorInt colour: Int)`
+Set the colour of the progress buffered section
+
+#### `fun setProgressPlayedColour(@ColorInt colour: Int)`
+Set the colour of the progress played section
+
+#### `fun setProgressUnplayedColour(@ColorInt colour: Int)`
+Set the colour of the progress unplayed section
+
+#### `fun setProgressBackgroundColour(@ColorInt colour: Int)`
+Set the colour of the progress background
+
+#### `fun updatePlayPauseIcons(@DrawableRes playIcon: Int, @DrawableRes pauseIcon: Int)`
+Update the icons of the play and pause buttons
+
+#### `fun setProgressUpdateListener(listener: ProgressUpdateListener?)`
+Set the listener to receive updates for playback progress
+
+#### `fun setTimeBarMinUpdateInterval(minUpdateIntervalMs: Int)`
+Set the time bar minimum update interval
+
+#### `fun show()`
+Show the player UI
+
+#### `fun hide()`
+Hide the player UI
+
+#### `fun resetPlayerUi()`
+Reset the player UI styling to the default values.
